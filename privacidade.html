@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>Política de Privacidade — Monitoramento de rotina</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f5f1;
+      --surface: #ffffff;
+      --text: #1d2621;
+      --muted: #5f6d65;
+      --line: #e2e5df;
+      --accent: #14664b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1512;
+        --surface: #171f1a;
+        --text: #eef4f0;
+        --muted: #a7b4ac;
+        --line: #2a352e;
+        --accent: #65dbaa;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      padding: 28px 24px 34px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+    h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; }
+    h2 { margin: 28px 0 8px; font-size: 17px; letter-spacing: -0.01em; }
+    p, li { font-size: 14px; color: var(--muted); }
+    strong { color: var(--text); }
+    ul { padding-left: 20px; }
+    a { color: var(--accent); }
+    .updated { margin: 0 0 22px; font-size: 12px; color: var(--muted); }
+    .back {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .note {
+      margin-top: 26px;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 12.5px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="./">← Voltar ao site</a>
+    <h1>Política de Privacidade</h1>
+    <p class="updated">Monitoramento de rotina · última atualização: 8 de novembro de 2026</p>
+
+    <p>O <strong>Monitoramento de rotina</strong> foi feito para funcionar no seu aparelho, com o mínimo possível de conexão externa. Esta política explica quais dados o app usa, onde eles ficam e quais são as suas opções.</p>
+
+    <h2>1. Dados que você cria no app</h2>
+    <p>O app permite criar perfis locais e registrar:</p>
+    <ul>
+      <li>nome, bio, foto de avatar, banner, cor de destaque e PIN (armazenado como hash);</li>
+      <li>eventos da agenda, lembretes e marcações de concluído;</li>
+      <li>registros alimentares, quantidades, metas de proteínas e carboidratos;</li>
+      <li>preferências de tema e configurações do app.</li>
+    </ul>
+    <p>Esses dados ficam no armazenamento local do navegador ou do aplicativo Android (<strong>localStorage</strong>). O desenvolvedor não recebe, não acessa e não sincroniza esses dados.</p>
+
+    <h2>2. Internet e fotos</h2>
+    <p>A conexão com a internet é usada apenas quando você escolhe uma foto de perfil por um link <strong>https://</strong>. Nesse caso, a imagem é baixada do endereço que você informou. Se o site bloquear o download, o app pode carregar a imagem diretamente desse site para exibi-la. O app não envia seus eventos, alimentação, perfil ou PIN para o desenvolvedor.</p>
+
+    <h2>3. Permissões do Android</h2>
+    <ul>
+      <li><strong>Notificações:</strong> mostrar lembretes dos seus eventos.</li>
+      <li><strong>Alarmes exatos:</strong> avisar no horário escolhido, quando o aparelho permitir.</li>
+      <li><strong>Reinicialização:</strong> reagendar lembretes depois de reiniciar o celular.</li>
+      <li><strong>Internet:</strong> carregar fotos de perfil por link https.</li>
+      <li><strong>Vibração:</strong> dar retorno tátil em ações do app.</li>
+    </ul>
+    <p>O app não usa localização, câmera, microfone, contatos, SMS, chamadas ou identificadores de publicidade.</p>
+
+    <h2>4. Compartilhamento e venda de dados</h2>
+    <p>O app não vende, aluga, compartilha ou transfere seus dados para terceiros. Não há anúncios, rastreadores, analytics ou perfis publicitários.</p>
+
+    <h2>5. Segurança</h2>
+    <p>O PIN é uma proteção local contra acesso casual e é armazenado como hash. Ele <strong>não criptografa</strong> os eventos, a alimentação ou as fotos. Qualquer pessoa com acesso físico ao aparelho e ao armazenamento do app pode inspecionar os dados.</p>
+
+    <h2>6. Exclusão dos dados</h2>
+    <p>Você pode apagar um perfil dentro do app, limpar os eventos ou remover os dados do aplicativo nas configurações do Android. Desinstalar o app também remove os dados locais. Como não há conta online, não há dados em servidores para excluir.</p>
+
+    <h2>7. Backup</h2>
+    <p>O app permite exportar um backup em JSON. Esse arquivo é criado por você e fica onde você escolher salvar. O desenvolvedor não tem acesso a ele.</p>
+    <p>Além disso, o Android pode fazer backup automático dos dados do app na conta Google do usuário, conforme as configurações do aparelho. Esse backup é controlado pelo sistema e pelo usuário, não pelo desenvolvedor.</p>
+
+    <h2>8. Crianças</h2>
+    <p>O app não é direcionado a crianças menores de 13 anos e não coleta dados de crianças.</p>
+
+    <h2>9. Alterações nesta política</h2>
+    <p>Se esta política mudar, a data de atualização será alterada nesta página. Recomendamos consultar esta página periodicamente.</p>
+
+    <h2>10. Contato</h2>
+    <p>Para dúvidas sobre privacidade, entre em contato pelo e-mail <strong>henrisszzs2@gmail.com</strong>.</p>
+
+    <p class="note">Este app é uma ferramenta de organização pessoal e bem-estar. As informações nutricionais são aproximadas e não substituem orientação de nutricionista, médico ou outro profissional de saúde.</p>
+  </main>
+</body>
+</html>

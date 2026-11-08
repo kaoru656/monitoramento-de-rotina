@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="description" content="Monitoramento de rotina: agenda, lembretes e alimentação com proteínas e carboidratos. Grátis, sem anúncios e com dados no seu aparelho.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Monitoramento de rotina — Agenda e Nutrição">
+  <meta property="og:description" content="Agenda, lembretes e alimentação com proteínas e carboidratos. Grátis, sem anúncios e com dados no seu aparelho.">
+  <meta property="og:image" content="assets/feature-graphic.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Monitoramento de rotina — Agenda e Nutrição">
+  <meta name="twitter:description" content="Agenda, lembretes e alimentação com proteínas e carboidratos. Grátis e sem anúncios.">
+  <meta name="twitter:image" content="assets/feature-graphic.png">
+  <title>Monitoramento de rotina — Agenda e Nutrição</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="app/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="app/icons/apple-touch-icon.png">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f5f1;
+      --surface: #ffffff;
+      --surface-2: #eef1ec;
+      --text: #1d2621;
+      --muted: #5f6d65;
+      --faint: #8a968e;
+      --line: #e2e5df;
+      --accent: #14664b;
+      --accent-strong: #0d4b37;
+      --accent-soft: #e0efe7;
+      --on-accent: #ffffff;
+      --shadow: 0 18px 50px rgba(20, 40, 30, 0.12);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1512;
+        --surface: #171f1a;
+        --surface-2: #1d2821;
+        --text: #eef4f0;
+        --muted: #a7b4ac;
+        --faint: #7f8d85;
+        --line: #2a352e;
+        --accent: #65dbaa;
+        --accent-strong: #8ae9c4;
+        --accent-soft: #1b3529;
+        --on-accent: #07251b;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1080px, 100%); margin: 0 auto; padding: 0 20px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 22px 0 10px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand img { width: 44px; height: 44px; border-radius: 13px; box-shadow: var(--shadow); }
+    .brand b { display: block; font-size: 16px; letter-spacing: -0.02em; }
+    .brand span { display: block; font-size: 11px; color: var(--muted); }
+    .top-link { font-size: 12px; font-weight: 650; text-decoration: none; white-space: nowrap; }
+    .hero {
+      display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 36px; align-items: center;
+      padding: 42px 0 34px;
+    }
+    .eyebrow {
+      margin: 0 0 8px; font-size: 11px; font-weight: 750; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    h1 { margin: 0; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; letter-spacing: -0.045em; }
+    .lead { margin: 16px 0 0; max-width: 560px; color: var(--muted); font-size: 16px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+      color: var(--muted); font-size: 10.5px; font-weight: 650;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 46px; padding: 12px 18px; border-radius: 13px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); box-shadow: 0 10px 24px rgba(20, 102, 75, 0.24); }
+    .btn.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+    .btn small { font-weight: 500; opacity: 0.8; }
+    .hero-shot {
+      position: relative; padding: 10px; border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--surface-2));
+      box-shadow: var(--shadow);
+    }
+    .hero-shot img { width: 100%; border-radius: 20px; }
+    .section { padding: 34px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .section-head h2 { margin: 0; font-size: clamp(24px, 4vw, 34px); letter-spacing: -0.035em; line-height: 1.1; }
+    .section-head p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .card {
+      padding: 17px; border: 1px solid var(--line); border-radius: 16px;
+      background: var(--surface); box-shadow: 0 8px 22px rgba(20, 40, 30, 0.05);
+    }
+    .card .ico { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--accent-soft); color: var(--accent); font-size: 19px; }
+    .card b { display: block; margin-top: 11px; font-size: 13.5px; }
+    .card p { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; line-height: 1.5; }
+    .shots { display: flex; gap: 12px; overflow-x: auto; padding: 4px 2px 14px; scroll-snap-type: x mandatory; }
+    .shots figure { flex: 0 0 230px; margin: 0; scroll-snap-align: start; }
+    .shots img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(20, 40, 30, 0.08); }
+    .shots figcaption { margin-top: 7px; text-align: center; color: var(--muted); font-size: 10.5px; }
+    .install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .install { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .install b { display: block; font-size: 13.5px; }
+    .install ol { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 11.5px; line-height: 1.55; }
+    .install li + li { margin-top: 4px; }
+    .download {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; align-items: center;
+      padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow);
+    }
+    .download h2 { margin: 0; font-size: 24px; letter-spacing: -0.03em; }
+    .download p { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; }
+    .download .meta { margin-top: 12px; color: var(--faint); font-size: 10.5px; line-height: 1.6; }
+    .download .actions { margin-top: 16px; }
+    .download-shot img { border-radius: 16px; border: 1px solid var(--line); }
+    .privacy {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 20px 0 8px; border-top: 1px solid var(--line); margin-top: 26px;
+      color: var(--muted); font-size: 12px;
+    }
+    .privacy a { font-weight: 650; }
+    footer { padding: 18px 0 38px; color: var(--faint); font-size: 10.5px; text-align: center; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 28px; }
+      .hero-shot { max-width: 440px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .install-grid { grid-template-columns: 1fr; }
+      .download { grid-template-columns: 1fr; }
+      .download-shot { order: -1; max-width: 360px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 14px; }
+      header { padding-top: 16px; }
+      .brand b { font-size: 14px; }
+      .brand span { display: none; }
+      .top-link { font-size: 11px; }
+      .hero { padding-top: 22px; }
+      .lead { font-size: 14px; }
+      .btn { width: 100%; }
+      .actions { flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      .shots figure { flex-basis: 78%; }
+      .section { padding: 24px 0; }
+      .download { padding: 18px; }
+      .hero-shot img { max-height: 420px; object-fit: cover; object-position: top; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="./">
+        <img src="assets/app-icon-512.png" alt="">
+        <span>
+          <b>Monitoramento de rotina</b>
+          <span>Agenda, lembretes e nutrição</span>
+        </span>
+      </a>
+      <a class="top-link" href="app/">Abrir app →</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Grátis · sem anúncios · dados no seu aparelho</p>
+          <h1>Sua rotina e sua alimentação em um só lugar.</h1>
+          <p class="lead">Organize o dia, receba lembretes e acompanhe proteínas e carboidratos. Funciona como app no celular e não exige conta online.</p>
+          <div class="badges">
+            <span class="badge">📅 Agenda e lembretes</span>
+            <span class="badge">🥗 Proteínas e carboidratos</span>
+            <span class="badge">🔒 Dados locais</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="app/">Abrir app / instalar PWA</a>
+            <a class="btn" href="downloads/Monitoramento-de-Rotina-1.8.0.apk">Baixar APK <small>Android 10+</small></a>
+          </div>
+        </div>
+        <div class="hero-shot">
+          <img src="assets/screenshots/01-agenda.png" alt="Tela inicial do Monitoramento de rotina">
+        </div>
+      </section>
+
+      <section class="section" id="recursos">
+        <div class="section-head">
+          <div>
+            <h2>O que você encontra</h2>
+            <p>Feito para o dia a dia, sem complicação.</p>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="ico">📅</span>
+            <b>Agenda completa</b>
+            <p>Eventos com horário, local, notas, categorias, dia inteiro e lembretes.</p>
+          </article>
+          <article class="card">
+            <span class="ico">🥗</span>
+            <b>Monitoramento alimentar</b>
+            <p>Registre refeições, veja proteínas e carboidratos e acompanhe suas metas.</p>
+          </article>
+          <article class="card">
+            <span class="ico">👤</span>
+            <b>Perfis locais</b>
+            <p>Várias pessoas no mesmo aparelho, com foto, banner, bio e PIN opcional.</p>
+          </article>
+          <article class="card">
+            <span class="ico">🔒</span>
+            <b>Privacidade</b>
+            <p>Sem conta, sem anúncios e sem sincronização. Seus dados ficam no aparelho.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="capturas">
+        <div class="section-head">
+          <div>
+            <h2>Por dentro do app</h2>
+            <p>Telas reais do Monitoramento de rotina.</p>
+          </div>
+        </div>
+        <div class="shots">
+          <figure><img src="assets/screenshots/01-agenda.png" alt="Agenda do dia" loading="lazy"><figcaption>Agenda do dia</figcaption></figure>
+          <figure><img src="assets/screenshots/03-nutricao.png" alt="Resumo de proteínas e carboidratos" loading="lazy"><figcaption>Proteínas e carboidratos</figcaption></figure>
+          <figure><img src="assets/screenshots/04-refeicoes.png" alt="Refeições registradas" loading="lazy"><figcaption>Refeições do dia</figcaption></figure>
+          <figure><img src="assets/screenshots/05-perfil.png" alt="Perfil e apoio ao criador" loading="lazy"><figcaption>Perfil e personalização</figcaption></figure>
+          <figure><img src="assets/screenshots/06-pin.png" alt="Tela de PIN" loading="lazy"><figcaption>Proteção com PIN</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="section" id="instalar">
+        <div class="section-head">
+          <div>
+            <h2>Como instalar</h2>
+            <p>Escolha o caminho mais fácil para o seu celular.</p>
+          </div>
+        </div>
+        <div class="install-grid">
+          <article class="install">
+            <b>Android — PWA</b>
+            <ol>
+              <li>Abra <a href="app/">a versão web do app</a> no Chrome.</li>
+              <li>Toque no menu ⋮ do navegador.</li>
+              <li>Escolha <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</li>
+            </ol>
+          </article>
+          <article class="install">
+            <b>iPhone — PWA</b>
+            <ol>
+              <li>Abra <a href="app/">a versão web do app</a> no Safari.</li>
+              <li>Toque em Compartilhar.</li>
+              <li>Escolha <b>Adicionar à Tela de Início</b>.</li>
+            </ol>
+          </article>
+          <article class="install">
+            <b>Android — APK</b>
+            <ol>
+              <li>Baixe o <a href="downloads/Monitoramento-de-Rotina-1.8.0.apk">APK</a>.</li>
+              <li>Abra o arquivo e permita instalar apps desconhecidos.</li>
+              <li>Toque em Instalar.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        <div class="download">
+          <div>
+            <h2>Baixe o APK</h2>
+            <p>Para quem prefere instalar o app Android diretamente, sem loja.</p>
+            <div class="actions">
+              <a class="btn primary" href="downloads/Monitoramento-de-Rotina-1.8.0.apk">Baixar Monitoramento de Rotina 1.8.0</a>
+            </div>
+            <p class="meta">Android 10 ou superior · ~350 KB<br>O APK é assinado localmente. O Android/Play Protect pode pedir confirmação.</p>
+          </div>
+          <div class="download-shot">
+            <img src="assets/screenshots/02-proximos-dias.png" alt="Próximos dias" loading="lazy">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="privacy">
+      <span>Seus dados ficam no seu aparelho. Sem conta, anúncios ou rastreamento.</span>
+      <span><a href="privacidade.html">Política de privacidade</a> · <a href="mailto:henrisszzs2@gmail.com">henrisszzs2@gmail.com</a></span>
+    </div>
+    <footer>Monitoramento de rotina · v1.8.0 · feito para funcionar offline</footer>
+  </div>
+</body>
+</html>
